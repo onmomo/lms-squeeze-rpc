@@ -18,6 +18,11 @@
     "dependencies": {
         "jayson": "^3.3.0"
     },
+    "keywords": [
+        "lms",
+        "squeezebox",
+        "logitech media server"
+    ],
     "devDependencies": {
         "@types/node": "^13.13.4",
         "typescript": "^3.8.3"
