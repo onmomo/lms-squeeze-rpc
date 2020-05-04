@@ -8,8 +8,8 @@ export class SqueezeServer {
         this._stub = stub;
     }
     public async getStatusAsync(): Promise<IServerStatus> {
-        var serverInfo = await this.getServerStatusAsync();
-        var players = (serverInfo.players_loop || []).map((playerInfo) => {
+        let serverInfo = await this.getServerStatusAsync();
+        let players = (serverInfo.players_loop || []).map((playerInfo) => {
             return {
                 playerid: playerInfo.playerid,
                 name: playerInfo.name
@@ -20,12 +20,12 @@ export class SqueezeServer {
         };
     }
     public async getPlayerInfoByNameAsync(name: string): Promise<IPlayerInfo> {
-        var players = await this.getPlayerInfosAsync();
+        let players = await this.getPlayerInfosAsync();
         return players.filter((p) => p.name === name)[0];
     }
     public async getPlayerInfosAsync(): Promise<IPlayerInfo[]> {
-        var serverInfo = await this.getServerStatusAsync();
-        var players = (serverInfo.players_loop || []).map((playerInfo) => {
+        let serverInfo = await this.getServerStatusAsync();
+        let players = (serverInfo.players_loop || []).map((playerInfo) => {
             return {
                 playerid: playerInfo.playerid,
                 name: playerInfo.name

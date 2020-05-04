@@ -1,6 +1,6 @@
 import { SqueezeServerStub } from "./squeezeServerStub";
 import { IPlayerInfo, IPlayerStatus } from "./modelTypes";
-import { IRpcResponsePlayerStatus } from "./slimTypes";
+import { IRpcResponsePlayerStatus, IRpcResponsePlaylistItem } from "./slimTypes";
 
 export class SqueezePlayer {
     private _stub: SqueezeServerStub;
@@ -14,9 +14,20 @@ export class SqueezePlayer {
         }
 
     }
-    public async getStatusAsync(): Promise<IPlayerStatus> {
-        var status = await this._stub.requestAsync<IRpcResponsePlayerStatus>([this._id, ["status", "-", 1, "tags:cgABbehldiqtyrSuoKLNJ"]]);
-        var cur_playlist_item = status && status.playlist_cur_index != null && status.playlist_loop && status.playlist_loop[status.playlist_cur_index] || null;
+    public async getStatusAsync(): Promise<IPlayerStatus | undefined> {
+        let status = await this._stub.requestAsync<IRpcResponsePlayerStatus>([this._id, ["status", "-", 1, "tags:cgABbehldiqtyrSuoKLNJ"]]);
+        if (!status) {
+            return undefined;
+        }
+        let cur_playlist_item: IRpcResponsePlaylistItem | undefined;
+        if (status.playlist_cur_index != null && Array.isArray(status.playlist_loop)) {
+            status.playlist_loop.some((item) => {
+                if (+item["playlist index"] === +status.playlist_cur_index) {
+                    cur_playlist_item = item;
+                    return true;
+                }
+            });
+        }
         return {
             playerid: this._id,
             name: status.player_name,

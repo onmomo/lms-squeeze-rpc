@@ -24,7 +24,7 @@ export interface IRpcResponsePlayerStatus {
     mode: "play" | "pause" | "stop";
     "playlist shuffle": ZeroOrOne;
     remoteMeta: { id: string; title: string };
-    playlist_timestamp: number
+    playlist_timestamp: number;
 };
 export interface IRpcResponsePlaylistItem {
     id: number;
@@ -38,7 +38,8 @@ export interface IRpcResponsePlaylistItem {
     year: string;
     bitrate: string;
     url: string;
-    type: string
+    type: string;
+    "playlist index": string;
 }
 
 export interface IRpcResponseServerStatus {
@@ -56,7 +57,7 @@ export interface IRpcResponseServerStatus {
     lastscan: string;
     "sn player count": number;
     version: string;
-    httpport: string
+    httpport: string;
 
 }
 export interface IRpcResponsePlayerInfo {
@@ -74,5 +75,5 @@ export interface IRpcResponsePlayerInfo {
     power: ZeroOrOne;
     firmware: string;
     modelname: string;
-    name: string
+    name: string;
 };
