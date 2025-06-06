@@ -3,7 +3,11 @@ import { SqueezeServer } from "./squeezeServer";
 import { SqueezePlayer } from "./squeezePlayer";
 
 async function example() {
-    var clientAdress = "http://192.168.178.30:9000";
+    var clientAdress = process.argv[2];
+    if (!clientAdress) {
+        console.error("Usage: node example.js <clientAddress> (e.g. http://192.168.178.30:9000)");
+        process.exit(1);
+    }
     var client = new SqueezeServerStub(clientAdress);
 
     var server = new SqueezeServer(client);

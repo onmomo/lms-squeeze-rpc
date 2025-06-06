@@ -16,7 +16,7 @@
     "author": "",
     "license": "MIT",
     "dependencies": {
-        "jayson": "^3.3.0"
+        "jayson": "^4.2.0"
     },
     "keywords": [
         "lms",
@@ -24,7 +24,7 @@
         "logitech media server"
     ],
     "devDependencies": {
-        "@types/node": "^13.13.4",
-        "typescript": "^3.8.3"
+        "@types/node": "^22.15.30",
+        "typescript": "^5.8.3"
     }
 }
