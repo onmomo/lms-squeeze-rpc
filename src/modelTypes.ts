@@ -1,6 +1,10 @@
 export interface IPlayerInfo {
     name: string;
     playerid: string;
+    model: string; 
+    modelname: string;
+    firmware: string;
+    ip: string;    
 };
 
 export interface IServerStatus {

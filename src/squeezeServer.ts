@@ -1,5 +1,5 @@
 import { IPlayerInfo, IServerStatus } from "./modelTypes";
-import { IRpcResponseServerStatus } from "./slimTypes";
+import { IRpcResponsePlayerInfo, IRpcResponseServerStatus } from "./slimTypes";
 import { SqueezeServerStub } from "./squeezeServerStub";
 
 export class SqueezeServer {
@@ -10,10 +10,7 @@ export class SqueezeServer {
     public async getStatusAsync(): Promise<IServerStatus> {
         let serverInfo = await this.getServerStatusAsync();
         let players = (serverInfo.players_loop || []).map((playerInfo) => {
-            return {
-                playerid: playerInfo.playerid,
-                name: playerInfo.name
-            };
+            return this.mapPlayerInfo(playerInfo);
         });
         return {
             players
@@ -26,14 +23,21 @@ export class SqueezeServer {
     public async getPlayerInfosAsync(): Promise<IPlayerInfo[]> {
         let serverInfo = await this.getServerStatusAsync();
         let players = (serverInfo.players_loop || []).map((playerInfo) => {
-            return {
-                playerid: playerInfo.playerid,
-                name: playerInfo.name
-            };
+            return this.mapPlayerInfo(playerInfo);
         });
         return players;
     }
     private async getServerStatusAsync(): Promise<IRpcResponseServerStatus> {
         return await this._stub.requestAsync<IRpcResponseServerStatus>(["", ["serverstatus", "0", "999"]]);
     }
+    private mapPlayerInfo(playerInfo: IRpcResponsePlayerInfo): IPlayerInfo {
+        return {
+            playerid: playerInfo.playerid,
+            name: playerInfo.name,
+            model: playerInfo.model,
+            modelname: playerInfo.modelname,
+            firmware: playerInfo.firmware,
+            ip: playerInfo.ip                   
+        };
+    }   
 }

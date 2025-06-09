@@ -14,7 +14,8 @@ async function example() {
     var playerInfos = await server.getPlayerInfosAsync();
     var playerInfo = playerInfos && playerInfos[0];
     var player = playerInfo && new SqueezePlayer(client, playerInfo);
-
+    
+    console.log(playerInfo);
     await player.setVolumeAsync(10);
     console.log(await player.getStatusAsync());
     await player.setVolumeAsync(20);
