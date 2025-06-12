@@ -1,6 +1,10 @@
-# lms-squeeze-rpc
-A very basic API to interact with a Logitech Media Server via JSON-RPC
+A simple and lightweight API for interacting with a Logitech Media Server using JSON-RPC.
 
-This is an experimental package.
+## Testing Connectivity
+To verify the connection to your Logitech Media Server (LMS), execute the following command:
 
-**Use it at your own risk.**
+```bash
+npm run example http://<LMS-IP>:<PORT>
+```
+
+Replace `<LMS-IP>` and `<PORT>` with the IP address and port of your LMS instance. This command will establish a connection to the specified LMS and communicate with one of the detected Squeezebox players.
