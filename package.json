@@ -1,6 +1,6 @@
 {
-    "name": "lms-squeeze-rpc",
-    "version": "0.0.3",
+    "name": "lms-squeeze-rpc-x",
+    "version": "1.0.0",
     "description": "A very basic API to interact with a Logitech Media Server via JSON-RPC",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -10,9 +10,9 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/mepucoac/lms-squeeze-rpc.git"
+        "url": "https://github.com/onmomo/lms-squeeze-rpc-x.git"
     },
-    "homepage": "https://github.com/mepucoac/lms-squeeze-rpc",
+    "homepage": "https://github.com/onmomo/lms-squeeze-rpc-x",
     "author": "",
     "license": "MIT",
     "dependencies": {
