@@ -9,5 +9,5 @@ npm run example http://<LMS-IP>:<PORT>
 
 Replace `<LMS-IP>` and `<PORT>` with the IP address and port of your LMS instance. This command will establish a connection to the specified LMS and communicate with one of the detected Squeezebox players.
 
-## Credits
+## Credits
 Hard fork from [lms-squeeze-rpc](https://github.com/mepucoac/lms-squeeze-rpc)
